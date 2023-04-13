@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#define MAXIMO 100000
+#define MAXIMO 200000
 int main(){
     time_t t_1,t_2;    
     int i,j,aux, N, cont;
