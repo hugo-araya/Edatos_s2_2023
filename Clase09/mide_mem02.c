@@ -12,12 +12,12 @@ int main(){
         void *m = malloc(cantidad*megas);
         memset(m, 0, cantidad*megas);
         getrusage(RUSAGE_SELF, &usada);
-        printf("(%2d) Uso de memoria = %12ld Kb (%4ld Mb)\n", i, usada.ru_maxrss, usada.ru_maxrss/megas);
+        printf("(%2d) Uso de memoria = %12ld B (%4ld Mb)\n", i, usada.ru_maxrss, usada.ru_maxrss/megas);
         sleep(2);
     }
     printf("Dejamos pasar 5 segundos y medimos de nuevo.\n");
     sleep(5);
     getrusage(RUSAGE_SELF, &usada);
-    printf("(%2d) Uso de memoria = %12ld Kb (%4ld Mb)\n", i, usada.ru_maxrss, usada.ru_maxrss/megas);  
+    printf("(%2d) Uso de memoria = %12ld B (%4ld Mb)\n", i, usada.ru_maxrss, usada.ru_maxrss/megas);  
     return 0;
 }
