@@ -1,3 +1,4 @@
+#include <stdio.h>
 #define N 10
 #define NULO -1
 #define VACIA -1
@@ -16,10 +17,21 @@ BOOLEAN lista_vacia(LISTA l);
 BOOLEAN lista_llena(LISTA l);
 int largo_lista(LISTA l);
 int buscar_mem(LISTA l);
+
+// Agregar elementos a una lista
 LISTA add_final(LISTA l, int elem);
 LISTA add_inicio(LISTA l, int elem);
-LISTA del_final(LISTA l);
+LISTA add_pos(LISTA l, int elem, int despues);
+
+// Elininar elementos de una lista
+LISTA del_final(LISTA l, int *devolver);
 LISTA del_inicio(LISTA l);
+LISTA del_pos(LISTA l, int posicion);
+
+// Funciones NO Primitivas
+LISTA invertir_lista(LISTA l);
+
+// Funciones de construccion
 void muestra (LISTA l);
 void largo(LISTA l);
 
@@ -132,11 +144,17 @@ LISTA add_inicio(LISTA l, int elem){
     }
 }
 
-LISTA del_final(LISTA l){
+LISTA add_pos(LISTA l, int elem, int despues){
+
+    return l;
+}
+
+LISTA del_final(LISTA l, int *devolver){
     int p, q;
     if (lista_vacia(l) == FALSE){
         p = l.punt;
         if (l.sig[p] == NULO){
+            *devolver = l.dato[p];
             l.dato[p] = VACIA;
             l.punt = NULO;
         }
@@ -145,6 +163,7 @@ LISTA del_final(LISTA l){
                 q = p;
                 p = l.sig[p];
             }
+            *devolver = l.dato[p];
             l.dato[p] = VACIA;
             l.sig[q] = NULO;
         }
@@ -174,6 +193,25 @@ LISTA del_inicio(LISTA l){
     }
     return l;
 }
+
+LISTA del_pos(LISTA l, int posicion){
+
+    return l;
+}
+
+// Funciones NO Primitivas
+LISTA invertir_lista(LISTA l){
+    LISTA x;
+    int ret;
+    while (lista_vacia(l) == FALSE){
+        l = del_final(l, &ret);
+        //x = add_inicio(x, ret); 
+    }
+    return x;
+}
+
+
+// Funciones de Construccion
 
 void muestra (LISTA l){
     int i;
